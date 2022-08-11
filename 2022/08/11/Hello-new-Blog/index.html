@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="unionunion称为联合体，其中的变量共用内存。比如说下面的这个例子 12345678910union U&amp;#123;	int u1;	char u2;&amp;#125;;int main()&amp;#123;	U test;	test.u1&#x3D;3;	test.u2&#x3D;&amp;#x27;b&amp;#x27;;	&#x2F;&#x2F;实际输出结果是97、b&amp;#125;  因为是公用内存，所以这块内存取决于联合体中内存最大的那个，即int四个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2022/08/11/Hello-new-Blog/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="unionunion称为联合体，其中的变量共用内存。比如说下面的这个例子 12345678910union U&amp;#123;	int u1;	char u2;&amp;#125;;int main()&amp;#123;	U test;	test.u1&#x3D;3;	test.u2&#x3D;&amp;#x27;b&amp;#x27;;	&#x2F;&#x2F;实际输出结果是97、b&amp;#125;  因为是公用内存，所以这块内存取决于联合体中内存最大的那个，即int四个">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/08/11/Hello-new-Blog/photo/socket.png">
+<meta property="article:published_time" content="2022-08-11T13:46:31.811Z">
+<meta property="article:modified_time" content="2022-08-11T13:50:01.089Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/08/11/Hello-new-Blog/photo/socket.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Hello-new-Blog" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/08/11/Hello-new-Blog/" class="article-date">
+  <time datetime="2022-08-11T13:46:31.811Z" itemprop="datePublished">2022-08-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="union"><a href="#union" class="headerlink" title="union"></a>union</h2><p>union称为联合体，其中的变量共用内存。比如说下面的这个例子</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">union</span> <span class="title class_">U</span>&#123;</span><br><span class="line">	<span class="type">int</span> u1;</span><br><span class="line">	<span class="type">char</span> u2;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	U test;</span><br><span class="line">	test.u1=<span class="number">3</span>;</span><br><span class="line">	test.u2=<span class="string">&#x27;b&#x27;</span>;</span><br><span class="line">	<span class="comment">//实际输出结果是97、b</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因为是公用内存，所以这块内存取决于联合体中内存最大的那个，即int四个字节。对u2进行赋值的之后，会对int的前8位进行重写。</p>
+<p>同类型的联合体之间可以进行赋值，但是不同类型的联合体不能。即使两个联合体的变量和顺序全都一样。</p>
+<h2 id="结构体和类的内存对齐"><a href="#结构体和类的内存对齐" class="headerlink" title="结构体和类的内存对齐"></a>结构体和类的内存对齐</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">pragma</span> pack()<span class="comment">//用于内存对齐</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">ss</span>&#123;</span><br><span class="line">    <span class="type">int</span> a;</span><br><span class="line">    <span class="type">char</span> b;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> pack(0)<span class="comment">//按照最大内存的倍数对齐，这里是8</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> pack(1)<span class="comment">//按照最大内存的总和对齐，这里是5</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="进程间的通信方式有哪些？"><a href="#进程间的通信方式有哪些？" class="headerlink" title="进程间的通信方式有哪些？"></a>进程间的通信方式有哪些？</h3><p><strong>管道</strong>：管道是半双工通信，其分为无名管道和有名管道。无名管道只能在父子进程间通信，有名管道可以在任意进程间通信，无名管道就是linux中的 <code>‘|’</code></p>
+<p><strong>消息队列</strong>：</p>
+<p><strong>共享内存</strong>：每个进程都有自己的独立的虚拟内存空间，共享内存就是将不同的虚拟内存映射到相同的物理内存地址</p>
+<p><strong>信号量</strong>：对于共享内存，如果多个进程同时访问很有可能会冲突，因此需要保证在同一时刻只有一个进程访问了共享内存空间，信号量的作用就是这个。其作用就是实现进程间的互斥和同步，主要有两个操作：p操作和v操作。p操作在读取共享内存之前，在信号量上减一。v操作在读取共享内存之后，在信号量上加一。</p>
+<p><strong>信号</strong>：信号和信号量完全不一样，信号量用来管理进程对共享内存的访问何修改，信号是指在bash命令行中输入的内容，比如<code>kill</code>命令，或者在键盘的输入比如说<code>ctrl+c</code></p>
+<p><strong>Socket通信</strong>：这种模式用于跨网络之间的不同进程通信，函数调用如下</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">socket</span><span class="params">(<span class="type">int</span> domain, <span class="type">int</span> type, <span class="type">int</span> protocal)</span></span></span><br></pre></td></tr></table></figure>
+
+<p>其中domain用来指定使用的是IPv4(AF_INET)还是IPv6(AF_INET6)，type用来指定是字节流(TCP)还是数据报(UDP)的形式，protocal现在基本上没什么用，直接声明为0</p>
+<p><img src="photo/socket.png"></p>
+<ul>
+<li>服务端和客户端先进行初始化得到socket描述符</li>
+<li>服务端调用bind函数，绑定到IP地址和端口，调用listen函数进行监听，调用accept函数等待连接</li>
+<li>客户端调用connect函数，向服务端IP地址和端口请求连接</li>
+<li>连接成功后accept函数返回用于传输的socket描述符</li>
+<li>客户端使用write写入数据，服务端read读取数据；客户端使用close关闭连接时，会发送一个EOF，服务端在读到EOF之后，等待数据处理完成，使用close()关闭</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/08/11/Hello-new-Blog/" data-id="cl6p3mvwh0000t4uk46a938uh" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/08/11/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/08/11/Hello-new-Blog/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/11/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
