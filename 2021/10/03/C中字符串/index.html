@@ -16,22 +16,22 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="指针数组和数组指针优先级顺序（）&gt;[ ]&gt;*  数组指针：就是数组的指针，形式是char (*p)[] 指针数组：指针的数组，数组中的元素是指针，形式是char *p[]  指针数组1char *arr[4]&#x3D;&amp;#123;&quot;hello&quot;,&quot;world&quot;,&quot;new&quot;,&quot;boy&quot;&amp;#125;;  指针数组中的每">
+    <meta name="description" content="C中的字符串C中没有显示的字符串变量，使用字符串指针或者字符串数组的形式 字符串长度strlen函数，返回字符串中的字符个数，返回值类型是size_t，如果使用strlen比较两个字符串的长度，不要使用相减的方式，size_t相减的结果是一直大于0的 复制字符串strcpy(char *dst, const char *src)，如果源字符串的长度小于目标字符串的长度，复制过来的时候源字符串的\0">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数组指针和指针数组">
-<meta property="og:url" content="http://example.com/2021/10/03/%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E5%92%8C%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84/index.html">
+<meta property="og:title" content="C中字符串">
+<meta property="og:url" content="http://example.com/2021/10/03/C%E4%B8%AD%E5%AD%97%E7%AC%A6%E4%B8%B2/index.html">
 <meta property="og:site_name" content="冰淇凌的个人世界">
-<meta property="og:description" content="指针数组和数组指针优先级顺序（）&gt;[ ]&gt;*  数组指针：就是数组的指针，形式是char (*p)[] 指针数组：指针的数组，数组中的元素是指针，形式是char *p[]  指针数组1char *arr[4]&#x3D;&amp;#123;&quot;hello&quot;,&quot;world&quot;,&quot;new&quot;,&quot;boy&quot;&amp;#125;;  指针数组中的每">
+<meta property="og:description" content="C中的字符串C中没有显示的字符串变量，使用字符串指针或者字符串数组的形式 字符串长度strlen函数，返回字符串中的字符个数，返回值类型是size_t，如果使用strlen比较两个字符串的长度，不要使用相减的方式，size_t相减的结果是一直大于0的 复制字符串strcpy(char *dst, const char *src)，如果源字符串的长度小于目标字符串的长度，复制过来的时候源字符串的\0">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-10-03T06:04:59.000Z">
-<meta property="article:modified_time" content="2022-10-03T06:06:08.530Z">
+<meta property="article:published_time" content="2021-10-03T08:22:28.000Z">
+<meta property="article:modified_time" content="2022-10-03T08:22:55.751Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>数组指针和指针数组 - 冰淇凌的个人世界</title>
+  <title>C中字符串 - 冰淇凌的个人世界</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="数组指针和指针数组"></span>
+            <span id="subtitle" data-typed-text="C中字符串"></span>
           
         </div>
 
@@ -207,7 +207,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2021-10-03 14:04" pubdate>
+        <time datetime="2021-10-03 16:22" pubdate>
           2021年10月3日 下午
         </time>
       </span>
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          488 字
+          730 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          5 分钟
+          7 分钟
         
       </span>
     
@@ -268,23 +268,71 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">数组指针和指针数组</h1>
+            <h1 style="display: none">C中字符串</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="指针数组和数组指针"><a href="#指针数组和数组指针" class="headerlink" title="指针数组和数组指针"></a>指针数组和数组指针</h1><p>优先级顺序（）&gt;[ ]&gt;*</p>
-<ul>
-<li>数组指针：就是数组的指针，形式是<code>char (*p)[]</code></li>
-<li>指针数组：指针的数组，数组中的元素是指针，形式是<code>char *p[]</code></li>
-</ul>
-<h2 id="指针数组"><a href="#指针数组" class="headerlink" title="指针数组"></a>指针数组</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-type">char</span> *arr[<span class="hljs-number">4</span>]=&#123;<span class="hljs-string">&quot;hello&quot;</span>,<span class="hljs-string">&quot;world&quot;</span>,<span class="hljs-string">&quot;new&quot;</span>,<span class="hljs-string">&quot;boy&quot;</span>&#125;;<br></code></pre></td></tr></table></figure>
+                <h1 id="C中的字符串"><a href="#C中的字符串" class="headerlink" title="C中的字符串"></a>C中的字符串</h1><p>C中没有显示的字符串变量，使用字符串指针或者字符串数组的形式</p>
+<h2 id="字符串长度"><a href="#字符串长度" class="headerlink" title="字符串长度"></a>字符串长度</h2><p><code>strlen</code>函数，返回字符串中的字符个数，返回值类型是<code>size_t</code>，如果使用<code>strlen</code>比较两个字符串的长度，不要使用相减的方式，<code>size_t</code>相减的结果是一直大于0的</p>
+<h2 id="复制字符串"><a href="#复制字符串" class="headerlink" title="复制字符串"></a>复制字符串</h2><p><code>strcpy(char *dst, const char *src)</code>，如果源字符串的长度小于目标字符串的长度，复制过来的时候源字符串的<code>\0</code>也会被复制过来，那么在目标<code>dst</code>中<code>\0</code>之后的内容将会被有效的删除。</p>
+<p>如果源字符串的长度大于目标字符串的长度，<code>strcpy</code>函数会侵占数组后面的内存空间，可能会导致原先存在那里的变量的丢失。</p>
+<h2 id="连接字符串"><a href="#连接字符串" class="headerlink" title="连接字符串"></a>连接字符串</h2><p><code>char strcat(char *dst,const char * src)</code>，将一个字符串连接到目标字符串的后面，目标字符串可以是空字符串。</p>
+<h2 id="字符串比较函数"><a href="#字符串比较函数" class="headerlink" title="字符串比较函数"></a>字符串比较函数</h2><p><code>int strcmp(char const *s1, char const *s2)</code>，按照字典序进行比较，如果<code>s1&lt;s2</code>，会返回一个负值，相等是0，大于返回正值。</p>
+<h2 id="字符判定操作"><a href="#字符判定操作" class="headerlink" title="字符判定操作"></a>字符判定操作</h2><table>
+<thead>
+<tr>
+<th align="center">函数</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>isspace()</code></td>
+<td align="center">空格</td>
+</tr>
+<tr>
+<td align="center"><code>isdigit()</code></td>
+<td align="center">数字</td>
+</tr>
+<tr>
+<td align="center"><code>isxdigit()</code></td>
+<td align="center">十六进制数字</td>
+</tr>
+<tr>
+<td align="center"><code>islower()</code></td>
+<td align="center">小写字母</td>
+</tr>
+<tr>
+<td align="center"><code>isupper()</code></td>
+<td align="center">大写字母</td>
+</tr>
+<tr>
+<td align="center"><code>isalpha()</code></td>
+<td align="center">字母</td>
+</tr>
+<tr>
+<td align="center"><code>isalnum()</code></td>
+<td align="center">字母或者数字</td>
+</tr>
+</tbody></table>
+<h2 id="字符转换"><a href="#字符转换" class="headerlink" title="字符转换"></a>字符转换</h2><table>
+<thead>
+<tr>
+<th align="center">函数</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>int tolower(int ch)</code></td>
+<td align="center">转为小写</td>
+</tr>
+<tr>
+<td align="center"><code>int toupper(int ch)</code></td>
+<td align="center">转为大写</td>
+</tr>
+</tbody></table>
+<h2 id="内存操作函数"><a href="#内存操作函数" class="headerlink" title="内存操作函数"></a>内存操作函数</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-function"><span class="hljs-type">void</span> *<span class="hljs-title">memcpy</span><span class="hljs-params">(<span class="hljs-type">void</span> *dst,<span class="hljs-type">void</span> <span class="hljs-type">const</span> *src,<span class="hljs-type">size_t</span> length)</span></span>;<span class="hljs-comment">//内存拷贝</span><br><span class="hljs-function"><span class="hljs-type">void</span> *<span class="hljs-title">memset</span><span class="hljs-params">(<span class="hljs-type">void</span> *a,<span class="hljs-type">int</span> ch,<span class="hljs-type">size_t</span> length)</span></span>;<span class="hljs-comment">//内存赋值，一般都是赋值为char，int型也可以但是只能是0或者-1</span><br></code></pre></td></tr></table></figure>
 
-<p>指针数组中的每个元素都是指针，因为<code>[]</code>的优先级是大于<code>*</code>的，数组arr作为一个局部变量存储在栈区，而对于<code>“hello”</code>这些数值他们是常量，存储在静态存储区，使用一个指针指向这些字符串，<code>arr</code>中保存的就是这些指针</p>
-<h2 id="数组指针"><a href="#数组指针" class="headerlink" title="数组指针"></a>数组指针</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-built_in">char</span> (*p)[<span class="hljs-number">4</span>];<br></code></pre></td></tr></table></figure>
-
-<p><code>p</code>是一个指针，指向一个<code>char [4]</code>的数组，数组每个元素是<code>char</code>类型的</p>
-<p>和<code>char a[4]</code>的区别在于<code>a</code>是一个长度为4的字符数组，<code>p</code>是一个<code>char [4]</code>类型的，<code>a</code>是数组首元素的地址，<code>p</code>是数组首地址，两者的地址虽然一样，但是概念却是不同的。将<code>a+1</code>或的是数组<code>a</code>中第二个元素的地址，而<code>p+1</code>则会将<code>p</code>指向数组的末尾结束，那么如何将<code>p</code>指向数组<code>a</code>呢，使用取地址的方式<code>p=&amp;a</code></p>
 
                 
               </div>
@@ -309,8 +357,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>数组指针和指针数组</div>
-      <div>http://example.com/2021/10/03/数组指针和指针数组/</div>
+      <div>C中字符串</div>
+      <div>http://example.com/2021/10/03/C中字符串/</div>
     </div>
     <div class="license-meta">
       
@@ -352,9 +400,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/10/03/C%E4%B8%AD%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="C中字符串">
+                      <a href="/2022/08/11/%E5%85%B3%E4%BA%8E%E6%88%91/" title="">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">C中字符串</span>
+                        <span class="hidden-mobile"></span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -362,8 +410,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/08/31/GDB%E8%B0%83%E8%AF%95%E8%BF%87%E7%A8%8B/" title="GDB调试过程">
-                        <span class="hidden-mobile">GDB调试过程</span>
+                      <a href="/2021/10/03/%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E5%92%8C%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84/" title="数组指针和指针数组">
+                        <span class="hidden-mobile">数组指针和指针数组</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
