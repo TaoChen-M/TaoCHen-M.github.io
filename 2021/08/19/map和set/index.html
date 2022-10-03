@@ -16,22 +16,22 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="C++中的深拷贝和浅拷贝，并以String为例浅拷贝用一个类的对象去初始化另一个相同类的对象，如果在类中没有显示的定义拷贝构造函数，则编译器会生成一个默认的构造函数，这个构造函数通常是浅拷贝。 那么什么是浅拷贝呢？浅拷贝就是逐个字节的拷贝，如果是基本的数据类型，那么它是一份独立的拷贝，修改不同对象的值，不会相互影响；如果是引用数据类型，如对象、指针，那么他们是指向内存中的同一块地址。具体如下列代码">
+    <meta name="description" content="map和set 关联容器支持高效的关键字查找和访问。两个主要的关联容器是map和set，map中的元素是键值对。    有序 介绍    map 保存键值对   set 只保存关键字   multimap 关键字可以重复出现   multiset 关键字可以重复出现   无序    unordered_map 用哈希函数组织的map   unordered_set 用哈希函数组织的set   un">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++中的深拷贝和浅拷贝，并以String为例">
-<meta property="og:url" content="http://example.com/2022/08/22/C++%E4%B8%AD%E7%9A%84%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D%EF%BC%8C%E5%B9%B6%E4%BB%A5String%E4%B8%BA%E4%BE%8B/index.html">
+<meta property="og:title" content="map和set">
+<meta property="og:url" content="http://example.com/2021/08/19/map%E5%92%8Cset/index.html">
 <meta property="og:site_name" content="冰淇凌的个人世界">
-<meta property="og:description" content="C++中的深拷贝和浅拷贝，并以String为例浅拷贝用一个类的对象去初始化另一个相同类的对象，如果在类中没有显示的定义拷贝构造函数，则编译器会生成一个默认的构造函数，这个构造函数通常是浅拷贝。 那么什么是浅拷贝呢？浅拷贝就是逐个字节的拷贝，如果是基本的数据类型，那么它是一份独立的拷贝，修改不同对象的值，不会相互影响；如果是引用数据类型，如对象、指针，那么他们是指向内存中的同一块地址。具体如下列代码">
+<meta property="og:description" content="map和set 关联容器支持高效的关键字查找和访问。两个主要的关联容器是map和set，map中的元素是键值对。    有序 介绍    map 保存键值对   set 只保存关键字   multimap 关键字可以重复出现   multiset 关键字可以重复出现   无序    unordered_map 用哈希函数组织的map   unordered_set 用哈希函数组织的set   un">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-08-22T07:58:07.000Z">
-<meta property="article:modified_time" content="2022-08-22T12:42:56.038Z">
+<meta property="article:published_time" content="2021-08-19T07:58:07.000Z">
+<meta property="article:modified_time" content="2022-10-03T06:07:11.442Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>C++中的深拷贝和浅拷贝，并以String为例 - 冰淇凌的个人世界</title>
+  <title>map和set - 冰淇凌的个人世界</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="C++中的深拷贝和浅拷贝，并以String为例"></span>
+            <span id="subtitle" data-typed-text="map和set"></span>
           
         </div>
 
@@ -207,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-08-22 15:58" pubdate>
-          2022年8月22日 下午
+        <time datetime="2021-08-19 15:58" pubdate>
+          2021年8月19日 下午
         </time>
       </span>
     
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k 字
+          2.9k 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          17 分钟
+          24 分钟
         
       </span>
     
@@ -268,18 +268,98 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">C++中的深拷贝和浅拷贝，并以String为例</h1>
+            <h1 style="display: none">map和set</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="C-中的深拷贝和浅拷贝，并以String为例"><a href="#C-中的深拷贝和浅拷贝，并以String为例" class="headerlink" title="C++中的深拷贝和浅拷贝，并以String为例"></a>C++中的深拷贝和浅拷贝，并以String为例</h1><h3 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h3><p>用一个类的对象去初始化另一个相同类的对象，如果在类中没有显示的定义拷贝构造函数，则编译器会生成一个默认的构造函数，这个构造函数通常是浅拷贝。</p>
-<p>那么什么是浅拷贝呢？浅拷贝就是逐个字节的拷贝，如果是基本的数据类型，那么它是一份独立的拷贝，修改不同对象的值，不会相互影响；如果是引用数据类型，如对象、指针，那么他们是指向内存中的同一块地址。具体如下列代码所示：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-type">int</span> data=<span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span>* s;<span class="hljs-comment">//s指向一个int型的指针数组</span><br>    <span class="hljs-built_in">A</span>(<span class="hljs-type">int</span> _data,<span class="hljs-type">int</span> _s)&#123;<br>        data=_data;<br>        s=<span class="hljs-keyword">new</span> <span class="hljs-type">int</span>[_s];<br>        <span class="hljs-built_in">memset</span>(s,<span class="hljs-number">0</span>,_s*<span class="hljs-built_in">sizeof</span>(<span class="hljs-type">int</span>));<span class="hljs-comment">//memset函数设置的值只能是0和-1两种整数类型或者字符，因为其是按照字节来进行赋值</span><br>    &#125;<br>    ~<span class="hljs-built_in">A</span>()&#123;<br>        <span class="hljs-keyword">delete</span> []s;<br>    &#125;<br>&#125;;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-function">A <span class="hljs-title">a</span><span class="hljs-params">(<span class="hljs-number">5</span>,<span class="hljs-number">5</span>)</span>,<span class="hljs-title">b</span><span class="hljs-params">(a)</span></span>;<br>    cout&lt;&lt;a.data&lt;&lt;endl;<span class="hljs-comment">//5</span><br>    cout&lt;&lt;b.data&lt;&lt;endl;<span class="hljs-comment">//5</span><br>    b.data=<span class="hljs-number">10</span>;<br>    cout&lt;&lt;a.data&lt;&lt;endl;<span class="hljs-comment">//5</span><br>    cout&lt;&lt;b.data&lt;&lt;endl;<span class="hljs-comment">//10</span><br><br>    cout&lt;&lt;a.s[<span class="hljs-number">0</span>]&lt;&lt;endl;<span class="hljs-comment">//0</span><br>    cout&lt;&lt;b.s[<span class="hljs-number">0</span>]&lt;&lt;endl;<span class="hljs-comment">//0</span><br>    b.s[<span class="hljs-number">0</span>]=<span class="hljs-number">100</span>;<br>    cout&lt;&lt;a.s[<span class="hljs-number">0</span>]&lt;&lt;endl;<span class="hljs-comment">//100</span><br>    cout&lt;&lt;b.s[<span class="hljs-number">0</span>]&lt;&lt;endl;<span class="hljs-comment">//100</span><br>    <br>    <span class="hljs-comment">//析构函数调用,先执行a.~A(),已经将内存中的数据释放掉了</span><br>    a.~<span class="hljs-built_in">A</span>();<br>    b.~<span class="hljs-built_in">A</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+                <p>map和set</p>
+<p>关联容器支持高效的关键字查找和访问。两个主要的关联容器是map和set，map中的元素是键值对。</p>
+<table>
+<thead>
+<tr>
+<th>有序</th>
+<th>介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>map</td>
+<td>保存键值对</td>
+</tr>
+<tr>
+<td>set</td>
+<td>只保存关键字</td>
+</tr>
+<tr>
+<td>multimap</td>
+<td>关键字可以重复出现</td>
+</tr>
+<tr>
+<td>multiset</td>
+<td>关键字可以重复出现</td>
+</tr>
+<tr>
+<td><strong>无序</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>unordered_map</td>
+<td>用哈希函数组织的map</td>
+</tr>
+<tr>
+<td>unordered_set</td>
+<td>用哈希函数组织的set</td>
+</tr>
+<tr>
+<td>unordered_multimap</td>
+<td>用哈希函数组织的map:关键字可以重复出现</td>
+</tr>
+</tbody></table>
+<p>分别给出最适合使用<code>list</code>、<code>vector</code>、<code>deque</code>、<code>map</code>以及<code>set</code>的例子。</p>
+<ul>
+<li><p><code>list</code>：双向链表，适合频繁插入删除元素的场景。</p>
+</li>
+<li><p><code>vector</code>：适合频繁访问元素的场景。</p>
+</li>
+<li><p><code>deque</code>：双端队列，适合频繁在头尾插入删除元素的场景。</p>
+</li>
+<li><p><code>map</code>：字典。</p>
+</li>
+<li><p><code>set</code>：适合有序不重复的元素的场景。</p>
+</li>
+</ul>
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><p><code>map</code>的特性是所有元素都会根据键值自动排序，<code>map</code>的所有元素都是<code>pair</code>，同时拥有键值和实值。不允许两个相同的元素具有相同的键值。</p>
+<h4 id="可以通过map的迭代器改变元素内容吗？"><a href="#可以通过map的迭代器改变元素内容吗？" class="headerlink" title="可以通过map的迭代器改变元素内容吗？"></a>可以通过<code>map</code>的迭代器改变元素内容吗？</h4><p>如果想要修改元素的键值，是不可以的。因为键值关乎到<code>map</code>元素的排列规则。但是如果想要修改实值是可以的，因为实值并不影响元素的排列规则。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs C++C++">map&lt;int,string&gt; mymap&#123;&#123;1,&quot;hello&quot;&#125;,&#123;2,&quot;world&quot;&#125;,&#123;3,&quot;use&quot;&#125;,&#123;4,&quot;C++&quot;&#125;&#125;;<br>auto it = mymap.begin();<br><br>while(it!=mymap.end())&#123;<br>	cout &lt;&lt; it-&gt;first &lt;&lt; &quot; &quot; &lt;&lt; it-&gt;second &lt;&lt; endl;<br>	++it;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><code>map</code>的一些操作和<code>list</code>相似，行元素新增操作或者删除操作时，操作之前的所有的迭代器操作完成之后依然都有效。</p>
+<h3 id="map的定义"><a href="#map的定义" class="headerlink" title="map的定义"></a>map的定义</h3><p>定义map时必须既指明关键字类型又指明值类型</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs C++">map&lt;string,<span class="hljs-type">size_t</span>&gt; word_count;<span class="hljs-comment">//空容器</span><br>map&lt;string,string&gt; authors=&#123;&#123;<span class="hljs-string">&quot;Joyce&quot;</span>,<span class="hljs-string">&quot;James&quot;</span>&#125;,&#123;<span class="hljs-string">&quot;Austen&quot;</span>,<span class="hljs-string">&quot;Jane&quot;</span>&#125;&#125;;<br></code></pre></td></tr></table></figure>
 
-<p>浅拷贝会出现一个问题就是析构函数对同一块地址的重复释放，在上述代码中，如果我们显示的调用析构函数，就会发生错误，产生悬垂指针。</p>
-<h3 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h3><p>对于类中有指针这种情况，我们需要手动创建拷贝构造函数或者重载赋值运算符，深拷贝是将原先内存中的数据拷贝一份，放到新申请的内存中，并使用一个新的指针指向它。具体代码如下所示：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">String</span>&#123;<br><span class="hljs-keyword">private</span> :<br>    <span class="hljs-type">char</span>* m_data;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-comment">//构造函数</span><br>    <span class="hljs-built_in">String</span>(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *str=<span class="hljs-number">0</span>);<br>    <span class="hljs-comment">//拷贝构造函数</span><br>    <span class="hljs-built_in">String</span>(<span class="hljs-type">const</span> String &amp;str);<br>    <span class="hljs-comment">//重载赋值</span><br>    String&amp; <span class="hljs-keyword">operator</span>=(<span class="hljs-type">const</span> String&amp; str);<br>    <span class="hljs-comment">//析构函数</span><br>    ~<span class="hljs-built_in">String</span>();<br>&#125;;<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-title">String::String</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *str)</span> </span>&#123;<br>    <span class="hljs-comment">//如果使用值进行初始化，拷贝过来并增加一个\0表示字符串结束</span><br>    <span class="hljs-keyword">if</span> (str)&#123;<br>        m_data=<span class="hljs-keyword">new</span> <span class="hljs-type">char</span>[<span class="hljs-built_in">strlen</span>(str)+<span class="hljs-number">1</span>];<br>        <span class="hljs-built_in">strcpy</span>(m_data,str);<br>    &#125;<br>    <span class="hljs-keyword">else</span>&#123;<br>        m_data=<span class="hljs-keyword">new</span> <span class="hljs-type">char</span>[<span class="hljs-number">1</span>];<br>        *m_data=<span class="hljs-string">&#x27;\0&#x27;</span>;<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-title">String::String</span><span class="hljs-params">(<span class="hljs-type">const</span> String &amp;str)</span> </span>&#123;<br>    m_data=<span class="hljs-keyword">new</span> <span class="hljs-type">char</span>[<span class="hljs-built_in">strlen</span>(str.m_data)+<span class="hljs-number">1</span>];<br>    <span class="hljs-built_in">strcpy</span>(m_data,str.m_data);<br>&#125;<br><br><span class="hljs-comment">//操作符重载一定是作用在左边的变量上</span><br><span class="hljs-comment">//类内操作符重载（作为成员函数）操作符一定是两个形参，但是在类内来写只有一个形参，this形参被省略</span><br><span class="hljs-keyword">inline</span> String &amp;String::<span class="hljs-keyword">operator</span>=(<span class="hljs-type">const</span> String &amp;str) &#123;<br>    <span class="hljs-comment">//如果是字符串本身直接等于即可</span><br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>==&amp;str)&#123;<br>        <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>    &#125;<br>    <span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-keyword">delete</span>[] str.m_data;<br>        m_data=<span class="hljs-keyword">new</span> <span class="hljs-type">char</span>[<span class="hljs-built_in">strlen</span>(str.m_data)+<span class="hljs-number">1</span>];<br>        <span class="hljs-built_in">strcpy</span>(m_data,str.m_data);<br>        <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">inline</span> String::~<span class="hljs-built_in">String</span>() &#123;<br>    <span class="hljs-keyword">delete</span>[] m_data;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="map的查找和遍历"><a href="#map的查找和遍历" class="headerlink" title="map的查找和遍历"></a>map的查找和遍历</h3><ul>
+<li>使用迭代器进行遍历</li>
+<li>数组形式，index为key</li>
+<li>find查找指定的key</li>
+</ul>
+<h4 id="find和count"><a href="#find和count" class="headerlink" title="find和count"></a>find和count</h4><p>使用<em>find</em>和<em>count</em>函数，可以通过<em>find</em>查找指定的关键字是否出现，count函数返回的是一个容器中，某一元素出现的次数，对于map，即返回key出现的次数，但是map中的key是不允许重复出现的，故count函数返回值只能是1（存在）或0（不存在）。</p>
+<p>使用find，返回的是一个迭代器，若容器中不存在该关键字则返回<em>map.end()</em><br>如：要找到某一个key的value值</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs C++">map&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt; mymap;<br><span class="hljs-keyword">if</span>(mymap.<span class="hljs-built_in">find</span>(key)!=mymap.<span class="hljs-built_in">end</span>())&#123;<br>    cout&lt;&lt;mymap.<span class="hljs-built_in">find</span>(key)-&gt;second&lt;&lt;endl;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="数组形式"><a href="#数组形式" class="headerlink" title="数组形式"></a>数组形式</h4><p><em>map</em>中可以使用下标运算符和对应的*at( )*函数，但是set类型不支持下标，因为set中没有与关键字相关联的“值”，元素本身就是关键字。map下标运算符接收一个索引，获取与此关键字相关联的值，如果关键字并不在map中，则为它创建一个元素插入到map中。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs C++">map&lt;string,<span class="hljs-type">sizet_t</span>&gt; word_count;<span class="hljs-comment">//空map</span><br>word_count[<span class="hljs-string">&quot;Anna&quot;</span>]=<span class="hljs-number">1</span>;<span class="hljs-comment">//在word_count中搜索关键字为Anna的元素，未找到，则进行插入操作。</span><br>word.<span class="hljs-built_in">at</span>(<span class="hljs-string">&quot;Anna&quot;</span>);<span class="hljs-comment">//访问关键字为Anna的值</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="map中插入元素"><a href="#map中插入元素" class="headerlink" title="map中插入元素"></a>map中插入元素</h3><p>对map中进行insert操作时，元素类型必须是pair类型，因此在insert的参数列表中创建一个pair。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++">word_count.<span class="hljs-built_in">insert</span>(&#123;word,<span class="hljs-number">1</span>&#125;);<br>word_count.<span class="hljs-built_in">insert</span>(<span class="hljs-built_in">make_pair</span>(word,<span class="hljs-number">1</span>));<br>word_count.<span class="hljs-built_in">insert</span>(map&lt;string,<span class="hljs-type">size_t</span>&gt;::<span class="hljs-built_in">value_type</span>(word,<span class="hljs-number">1</span>))<br></code></pre></td></tr></table></figure>
+
+<h3 id="map的删除"><a href="#map的删除" class="headerlink" title="map的删除"></a>map的删除</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs C++">iterator erase（iterator it);<span class="hljs-comment">//通过一个条目对象删除</span><br>iterator erase（iterator first，iterator last）<span class="hljs-comment">//删除一个范围</span><br><span class="hljs-function">size_type <span class="hljs-title">erase</span><span class="hljs-params">(<span class="hljs-type">const</span> Key&amp;key)</span></span>;<span class="hljs-comment">//通过关键字删除</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="map和unordered-map区别"><a href="#map和unordered-map区别" class="headerlink" title="map和unordered_map区别"></a>map和unordered_map区别</h2><h3 id="内部实现机理不同"><a href="#内部实现机理不同" class="headerlink" title="内部实现机理不同"></a>内部实现机理不同</h3><p><strong>map：</strong>内部实现了一个红黑树（红黑树是非严格平衡二叉搜索树，而AVL是严格平衡二叉搜索树），红黑树具有自动排序的功能，因此map内部都是有序的红黑树，每一个节点都代表着map的一个元素。</p>
+<p><strong>unordered_map：</strong>内部实现了一个哈希表（把关键值映射到hash表中的一个位置来访问，查找时间复杂度可以达到O(1)，在海量数据处理中有广泛应用）</p>
+<p><strong>map</strong>的<code>key</code>可以是任何类型，但是unordered_map的<code>key</code><strong>只能是C++中定义的关键字类型</strong></p>
+<h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><p><code>set</code>的特性是所有元素都会根据键值自动排序，<code>set</code>中元素的键值就是实值，实值就是键值，<code>set</code>不允许两个元素具有相同的键值。</p>
+<h4 id="是否可以通过迭代器来改变set元素值？"><a href="#是否可以通过迭代器来改变set元素值？" class="headerlink" title="是否可以通过迭代器来改变set元素值？"></a>是否可以通过迭代器来改变<code>set</code>元素值？</h4><p>不可以。</p>
+<p>因为<code>set</code>的元素值就是键值，关系到set元素的排列规则，如果任意改变set的元素值会严重破坏<code>set</code>组织。从<code>set</code>的源码中可以看到，``set<T>::iterator<code>被定义为底层红黑树的</code>const_iterator`。</p>
+<p><code>set</code>具有和<code>list</code>相同的某些性质，当对<code>set</code>进行元素新增操作或者删除操作时，操作之前的所有的迭代器操作完成之后依然都有效。</p>
+<h3 id="与set声明和常见API"><a href="#与set声明和常见API" class="headerlink" title="与set声明和常见API"></a>与set声明和常见API</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs C++">vector&lt;<span class="hljs-type">int</span>&gt; myvec=&#123;<span class="hljs-number">2</span>,<span class="hljs-number">4</span>,<span class="hljs-number">6</span>,<span class="hljs-number">8</span>&#125;;<br>set&lt;<span class="hljs-type">int</span>&gt; myset;<span class="hljs-comment">//声明</span><br>myset.<span class="hljs-built_in">insert</span>(myvec.<span class="hljs-built_in">cbegin</span>(),myvec.<span class="hljs-built_in">cend</span>());<span class="hljs-comment">//新增4个元素</span><br>myset.<span class="hljs-built_in">insert</span>(&#123;<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">7</span>,<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">7</span>&#125;)<span class="hljs-comment">//新增4个元素</span><br>myset.<span class="hljs-built_in">insert</span>(<span class="hljs-number">10</span>);<span class="hljs-comment">//新增一个元素</span><br><br>myset.<span class="hljs-built_in">size</span>();<span class="hljs-comment">//set中元素的个数</span><br>myset.<span class="hljs-built_in">clear</span>();<span class="hljs-comment">//删除set中的所有元素</span><br>myset.<span class="hljs-built_in">empty</span>();<span class="hljs-comment">//判断set是否为空</span><br>myset.<span class="hljs-built_in">max_size</span>();<span class="hljs-comment">//返回容器中可能包含的元素的最大个数</span><br></code></pre></td></tr></table></figure>
 
 
                 
@@ -305,8 +385,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>C++中的深拷贝和浅拷贝，并以String为例</div>
-      <div>http://example.com/2022/08/22/C++中的深拷贝和浅拷贝，并以String为例/</div>
+      <div>map和set</div>
+      <div>http://example.com/2021/08/19/map和set/</div>
     </div>
     <div class="license-meta">
       
@@ -318,7 +398,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年8月22日</div>
+          <div>2021年8月19日</div>
         </div>
       
       
@@ -348,9 +428,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/08/22/C++%E4%B8%AD%E7%9A%84sort%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F/" title="C++中的sort自定义排序">
+                      <a href="/2021/08/22/C++%E4%B8%AD%E7%9A%84%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D%EF%BC%8C%E5%B9%B6%E4%BB%A5String%E4%B8%BA%E4%BE%8B/" title="C++中的深拷贝和浅拷贝，并以String为例">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">C++中的sort自定义排序</span>
+                        <span class="hidden-mobile">C++中的深拷贝和浅拷贝，并以String为例</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -358,8 +438,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/08/19/map%E5%92%8Cset/" title="map和set">
-                        <span class="hidden-mobile">map和set</span>
+                      <a href="/2021/08/12/%E5%9B%BE%E8%A7%A3HTTP%E7%AC%94%E8%AE%B0/" title="图解HTTP笔记">
+                        <span class="hidden-mobile">图解HTTP笔记</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

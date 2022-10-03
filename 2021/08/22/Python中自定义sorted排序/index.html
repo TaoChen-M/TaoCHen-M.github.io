@@ -16,23 +16,22 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="C++中的结构体内存对齐首先来看一下常见的数据类型占用的内存大小：  对于基本数据类型32位主机和64位主机是相同的，不同的只有指针的大小。 结构体内存对齐的原因是可以提高内存的访问速度。 结构体内存对齐遵循两个规则：  数组成员对齐规则：首个元素放在偏移地址是0的位置，以后每个元素的偏移地址遵循min(当前变量的字节大小，#pragma pack(n))整数倍开始的地方，在windows中#pr">
+    <meta name="description" content="Python中sorted自定义排序规则Python中有两个排序函数，一个是sorted，另外一个是sort，默认都是增序。sort只能对list进行排序，并且是原地修改，如： 12l&#x3D;[2,1,5,0]l.sort()#0 1 2 5  sorted可以对任何容器进行排序，比如set，map，元组以及list，需要使用一个新的变量进行接收，如下所示： 1234567891011121314151">
 <meta property="og:type" content="article">
-<meta property="og:title" content="结构体内存对齐">
-<meta property="og:url" content="http://example.com/2022/08/31/%E7%BB%93%E6%9E%84%E4%BD%93%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90/index.html">
+<meta property="og:title" content="Python中自定义sorted排序">
+<meta property="og:url" content="http://example.com/2021/08/22/Python%E4%B8%AD%E8%87%AA%E5%AE%9A%E4%B9%89sorted%E6%8E%92%E5%BA%8F/index.html">
 <meta property="og:site_name" content="冰淇凌的个人世界">
-<meta property="og:description" content="C++中的结构体内存对齐首先来看一下常见的数据类型占用的内存大小：  对于基本数据类型32位主机和64位主机是相同的，不同的只有指针的大小。 结构体内存对齐的原因是可以提高内存的访问速度。 结构体内存对齐遵循两个规则：  数组成员对齐规则：首个元素放在偏移地址是0的位置，以后每个元素的偏移地址遵循min(当前变量的字节大小，#pragma pack(n))整数倍开始的地方，在windows中#pr">
+<meta property="og:description" content="Python中sorted自定义排序规则Python中有两个排序函数，一个是sorted，另外一个是sort，默认都是增序。sort只能对list进行排序，并且是原地修改，如： 12l&#x3D;[2,1,5,0]l.sort()#0 1 2 5  sorted可以对任何容器进行排序，比如set，map，元组以及list，需要使用一个新的变量进行接收，如下所示： 1234567891011121314151">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/images/%E6%95%B0%E6%8D%AE%E6%88%90%E5%91%98%E5%A4%A7%E5%B0%8F.png">
-<meta property="article:published_time" content="2022-08-31T09:24:28.000Z">
-<meta property="article:modified_time" content="2022-08-31T09:27:01.522Z">
+<meta property="article:published_time" content="2021-08-22T12:53:00.000Z">
+<meta property="article:modified_time" content="2022-10-03T06:07:03.002Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/images/%E6%95%B0%E6%8D%AE%E6%88%90%E5%91%98%E5%A4%A7%E5%B0%8F.png">
   
   
   
-  <title>结构体内存对齐 - 冰淇凌的个人世界</title>
+  <title>Python中自定义sorted排序 - 冰淇凌的个人世界</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="结构体内存对齐"></span>
+            <span id="subtitle" data-typed-text="Python中自定义sorted排序"></span>
           
         </div>
 
@@ -208,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-08-31 17:24" pubdate>
-          2022年8月31日 下午
+        <time datetime="2021-08-22 20:53" pubdate>
+          2021年8月22日 晚上
         </time>
       </span>
     
@@ -220,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k 字
+          1.3k 字
         
       </span>
     
@@ -231,7 +230,7 @@
         
         
         
-          9 分钟
+          11 分钟
         
       </span>
     
@@ -269,23 +268,20 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">结构体内存对齐</h1>
+            <h1 style="display: none">Python中自定义sorted排序</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="C-中的结构体内存对齐"><a href="#C-中的结构体内存对齐" class="headerlink" title="C++中的结构体内存对齐"></a>C++中的结构体内存对齐</h1><p>首先来看一下常见的数据类型占用的内存大小：</p>
-<p><img src="/images/%E6%95%B0%E6%8D%AE%E6%88%90%E5%91%98%E5%A4%A7%E5%B0%8F.png" srcset="/img/loading.gif" lazyload></p>
-<p>对于基本数据类型32位主机和64位主机是相同的，不同的只有指针的大小。</p>
-<p>结构体内存对齐的原因是可以提高内存的访问速度。</p>
-<p>结构体内存对齐遵循两个规则：</p>
-<ul>
-<li>数组成员对齐规则：首个元素放在偏移地址是0的位置，以后每个元素的偏移地址遵循<code>min(当前变量的字节大小，#pragma pack(n))</code>整数倍开始的地方，在windows中<code>#pragma pack</code>是8，在Linux中是4。</li>
-<li>结构体大小（sizeof）规则：<code>min(数据成员最大的那个所占字节数，#pragma pack(n))</code>的整数倍</li>
-<li>结构体作为成员的对齐规则：如果结构体B中嵌套了结构体A，那么还是以A中的最大数据成员大小来进行对齐，<code>min(结构体A中数据成员最大的那个所占字节数，#pragma pack(n))</code>。比如结构体A中有char、int、double等成员，那么B中A的偏移地址应该从8的整数倍开始存储。</li>
-</ul>
-<p>参考示例：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">define</span> _CRT_SECURE_NO_WARNINGS</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stddef.h&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">pragma</span> pack(4)   <span class="hljs-comment">// 16 8 4 2 1</span></span><br><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Student</span><br>&#123;<br>    <span class="hljs-type">int</span> a;<br>    <span class="hljs-type">char</span> b;<br>    <span class="hljs-type">double</span> c;<br>    <span class="hljs-type">float</span> d;<br>&#125;;<br><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Student2</span><br>&#123;<br>    <span class="hljs-type">char</span> a;<br>    <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Student</span> b;<br>    <span class="hljs-type">double</span> c;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">test</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;#pragma pack(4)\n&quot;</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, <span class="hljs-built_in">offsetof</span>(<span class="hljs-keyword">struct</span> Student, a));<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, <span class="hljs-built_in">offsetof</span>(<span class="hljs-keyword">struct</span> Student, b));<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, <span class="hljs-built_in">offsetof</span>(<span class="hljs-keyword">struct</span> Student, c));<br><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>,<span class="hljs-built_in">sizeof</span>(<span class="hljs-keyword">struct</span> Student));<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-built_in">test</span>();<br><span class="hljs-comment">//输出:</span><br><span class="hljs-meta">#<span class="hljs-keyword">pragma</span> pack(4)</span><br><span class="hljs-number">0</span><br><span class="hljs-number">4</span><br><span class="hljs-number">8</span><br><span class="hljs-number">20</span><br></code></pre></td></tr></table></figure>
+                <h1 id="Python中sorted自定义排序规则"><a href="#Python中sorted自定义排序规则" class="headerlink" title="Python中sorted自定义排序规则"></a>Python中sorted自定义排序规则</h1><p>Python中有两个排序函数，一个是sorted，另外一个是sort，默认都是增序。sort只能对list进行排序，并且是原地修改，如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">l=[<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">5</span>,<span class="hljs-number">0</span>]<br>l.sort()<span class="hljs-comment">#0 1 2 5</span><br></code></pre></td></tr></table></figure>
+
+<p>sorted可以对任何容器进行排序，比如set，map，元组以及list，需要使用一个新的变量进行接收，如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs Python"><span class="hljs-comment">#列表</span><br>l=[<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">5</span>,<span class="hljs-number">0</span>]<br>l=<span class="hljs-built_in">sorted</span>(l)<span class="hljs-comment">#[0, 1, 2, 5]</span><br><br><span class="hljs-comment">#元组 元组和列表的一个区别是列表可以修改，元组不可修改</span><br>t=(<span class="hljs-number">2</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">0</span>)<br>t=<span class="hljs-built_in">sorted</span>(t)<span class="hljs-comment">#[0, 2, 4, 5]</span><br><br><span class="hljs-comment">#字典</span><br>m=&#123;<span class="hljs-number">1</span>:<span class="hljs-string">&#x27;hhh&#x27;</span>,<span class="hljs-number">2</span>:<span class="hljs-string">&quot;www&quot;</span>,<span class="hljs-number">0</span>:<span class="hljs-string">&#x27;ooo&#x27;</span>&#125;<br>m=<span class="hljs-built_in">sorted</span>(m)<span class="hljs-comment">#[0, 1, 2] 默认按照key进行排序，并将排序好的以列表的形式输出</span><br>m=<span class="hljs-built_in">sorted</span>(m.values()) <span class="hljs-comment"># 按照values进行排序，同样以列表的形式输出</span><br><br><span class="hljs-comment">#集合</span><br>s=&#123;<span class="hljs-number">1</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">7</span>,<span class="hljs-number">0</span>,<span class="hljs-number">2</span>&#125;<br>s=<span class="hljs-built_in">sorted</span>(s)<span class="hljs-comment">#[0, 1, 2, 4, 5, 7]</span><br></code></pre></td></tr></table></figure>
+
+<p>如何自定义sorted排序呢，主要是通过key和reverse这两个关键字实现。</p>
+<p>key用来确定当前使用的排序规则，结合lambda表达式使用。reverse表示反转的意思。因为默认是增序，如果设置reverse为True，则是降序排序</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs Python">l=[<span class="hljs-string">&quot;animal&quot;</span>,<span class="hljs-string">&quot;blue&quot;</span>,<span class="hljs-string">&#x27;dog&#x27;</span>,<span class="hljs-string">&#x27;camera&#x27;</span>]<br>l=<span class="hljs-built_in">sorted</span>(l,key=<span class="hljs-built_in">len</span>)<span class="hljs-comment"># 按照长度进行排序 [&#x27;dog&#x27;, &#x27;blue&#x27;, &#x27;animal&#x27;, &#x27;camera&#x27;]</span><br>l=<span class="hljs-built_in">sorted</span>(l,key=<span class="hljs-built_in">len</span>,reverse=<span class="hljs-literal">True</span>)<span class="hljs-comment"># [&#x27;animal&#x27;, &#x27;camera&#x27;, &#x27;blue&#x27;, &#x27;dog&#x27;]</span><br><br>l=[[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>],[<span class="hljs-number">4</span>,<span class="hljs-number">5</span>],[<span class="hljs-number">3</span>,<span class="hljs-number">1</span>],[<span class="hljs-number">5</span>,<span class="hljs-number">10</span>]]<br>l=<span class="hljs-built_in">sorted</span>(l,key=<span class="hljs-keyword">lambda</span> x:x[<span class="hljs-number">1</span>])<span class="hljs-comment"># [[3, 1], [1, 2], [4, 5], [5, 10]]</span><br><span class="hljs-comment"># lambda可以有多个传入参数，但是表达式只能有一个</span><br><br>m=&#123;<span class="hljs-number">1</span>:<span class="hljs-string">&#x27;dog&#x27;</span>,<span class="hljs-number">4</span>:<span class="hljs-string">&#x27;camera&#x27;</span>,<span class="hljs-number">0</span>:<span class="hljs-string">&#x27;apple&#x27;</span>&#125;<br>mm=<span class="hljs-built_in">sorted</span>(m.items(),key=<span class="hljs-keyword">lambda</span> x:x[<span class="hljs-number">1</span>])<span class="hljs-comment">#[(0, &#x27;apple&#x27;), (4, &#x27;camera&#x27;), (1, &#x27;dog&#x27;)]</span><br><span class="hljs-comment"># x传入的是字典元组(1,&#x27;dog&#x27;),x[1]表示按照value排序，x[0]按照key排序，也可以对x[1]执行len(x[1])按照长度排序</span><br></code></pre></td></tr></table></figure>
 
 
                 
@@ -296,6 +292,13 @@
               <div class="post-metas my-3">
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Python/">#Python</a>
+      
+    </div>
+  
 </div>
 
 
@@ -304,8 +307,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>结构体内存对齐</div>
-      <div>http://example.com/2022/08/31/结构体内存对齐/</div>
+      <div>Python中自定义sorted排序</div>
+      <div>http://example.com/2021/08/22/Python中自定义sorted排序/</div>
     </div>
     <div class="license-meta">
       
@@ -317,7 +320,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年8月31日</div>
+          <div>2021年8月22日</div>
         </div>
       
       
@@ -347,9 +350,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/08/31/GDB%E8%B0%83%E8%AF%95%E8%BF%87%E7%A8%8B/" title="GDB调试过程">
+                      <a href="/2021/08/31/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/" title="智能指针">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">GDB调试过程</span>
+                        <span class="hidden-mobile">智能指针</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -357,8 +360,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/08/22/Python%E4%B8%AD%E8%87%AA%E5%AE%9A%E4%B9%89sorted%E6%8E%92%E5%BA%8F/" title="Python中自定义sorted排序">
-                        <span class="hidden-mobile">Python中自定义sorted排序</span>
+                      <a href="/2021/08/22/C++%E4%B8%AD%E7%9A%84sort%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F/" title="C++中的sort自定义排序">
+                        <span class="hidden-mobile">C++中的sort自定义排序</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

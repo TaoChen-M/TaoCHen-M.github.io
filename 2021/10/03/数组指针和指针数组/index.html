@@ -16,21 +16,22 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="title: 欢迎来了解我 自我介绍">
+    <meta name="description" content="指针数组和数组指针优先级顺序（）&gt;[ ]&gt;*  数组指针：就是数组的指针，形式是char (*p)[] 指针数组：指针的数组，数组中的元素是指针，形式是char *p[]  指针数组1char *arr[4]&#x3D;&amp;#123;&quot;hello&quot;,&quot;world&quot;,&quot;new&quot;,&quot;boy&quot;&amp;#125;;  指针数组中的每">
 <meta property="og:type" content="article">
-<meta property="og:title" content="冰淇凌的个人世界">
-<meta property="og:url" content="http://example.com/2022/08/11/%E5%85%B3%E4%BA%8E%E6%88%91/index.html">
+<meta property="og:title" content="数组指针和指针数组">
+<meta property="og:url" content="http://example.com/2021/10/03/%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E5%92%8C%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84/index.html">
 <meta property="og:site_name" content="冰淇凌的个人世界">
-<meta property="og:description" content="title: 欢迎来了解我 自我介绍">
+<meta property="og:description" content="指针数组和数组指针优先级顺序（）&gt;[ ]&gt;*  数组指针：就是数组的指针，形式是char (*p)[] 指针数组：指针的数组，数组中的元素是指针，形式是char *p[]  指针数组1char *arr[4]&#x3D;&amp;#123;&quot;hello&quot;,&quot;world&quot;,&quot;new&quot;,&quot;boy&quot;&amp;#125;;  指针数组中的每">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-08-11T13:39:51.934Z">
-<meta property="article:modified_time" content="2022-08-19T08:21:28.693Z">
+<meta property="article:published_time" content="2021-10-03T06:04:59.000Z">
+<meta property="article:modified_time" content="2022-10-03T06:06:08.530Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>冰淇凌的个人世界</title>
+  <title>数组指针和指针数组 - 冰淇凌的个人世界</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -195,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text=""></span>
+            <span id="subtitle" data-typed-text="数组指针和指针数组"></span>
           
         </div>
 
@@ -206,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-08-11 21:39" pubdate>
-          2022年8月11日 晚上
+        <time datetime="2021-10-03 14:04" pubdate>
+          2021年10月3日 下午
         </time>
       </span>
     
@@ -218,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          16 字
+          488 字
         
       </span>
     
@@ -229,7 +230,7 @@
         
         
         
-          1 分钟
+          5 分钟
         
       </span>
     
@@ -267,13 +268,24 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none"></h1>
+            <h1 style="display: none">数组指针和指针数组</h1>
             
             
               <div class="markdown-body">
                 
-                <p>title: 欢迎来了解我</p>
-<h1 id="自我介绍"><a href="#自我介绍" class="headerlink" title="自我介绍"></a>自我介绍</h1>
+                <h1 id="指针数组和数组指针"><a href="#指针数组和数组指针" class="headerlink" title="指针数组和数组指针"></a>指针数组和数组指针</h1><p>优先级顺序（）&gt;[ ]&gt;*</p>
+<ul>
+<li>数组指针：就是数组的指针，形式是<code>char (*p)[]</code></li>
+<li>指针数组：指针的数组，数组中的元素是指针，形式是<code>char *p[]</code></li>
+</ul>
+<h2 id="指针数组"><a href="#指针数组" class="headerlink" title="指针数组"></a>指针数组</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-type">char</span> *arr[<span class="hljs-number">4</span>]=&#123;<span class="hljs-string">&quot;hello&quot;</span>,<span class="hljs-string">&quot;world&quot;</span>,<span class="hljs-string">&quot;new&quot;</span>,<span class="hljs-string">&quot;boy&quot;</span>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>指针数组中的每个元素都是指针，因为<code>[]</code>的优先级是大于<code>*</code>的，数组arr作为一个局部变量存储在栈区，而对于<code>“hello”</code>这些数值他们是常量，存储在静态存储区，使用一个指针指向这些字符串，<code>arr</code>中保存的就是这些指针</p>
+<h2 id="数组指针"><a href="#数组指针" class="headerlink" title="数组指针"></a>数组指针</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-built_in">char</span> (*p)[<span class="hljs-number">4</span>];<br></code></pre></td></tr></table></figure>
+
+<p><code>p</code>是一个指针，指向一个<code>char [4]</code>的数组，数组每个元素是<code>char</code>类型的</p>
+<p>和<code>char a[4]</code>的区别在于<code>a</code>是一个长度为4的字符数组，<code>p</code>是一个<code>char [4]</code>类型的，<code>a</code>是数组首元素的地址，<code>p</code>是数组首地址，两者的地址虽然一样，但是概念却是不同的。将<code>a+1</code>或的是数组<code>a</code>中第二个元素的地址，而<code>p+1</code>则会将<code>p</code>指向数组的末尾结束，那么如何将<code>p</code>指向数组<code>a</code>呢，使用取地址的方式<code>p=&amp;a</code></p>
+
                 
               </div>
             
@@ -281,6 +293,13 @@
             <div>
               <div class="post-metas my-3">
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/C/">#C++</a>
+      
+    </div>
   
 </div>
 
@@ -290,8 +309,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div></div>
-      <div>http://example.com/2022/08/11/关于我/</div>
+      <div>数组指针和指针数组</div>
+      <div>http://example.com/2021/10/03/数组指针和指针数组/</div>
     </div>
     <div class="license-meta">
       
@@ -303,7 +322,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年8月11日</div>
+          <div>2021年10月3日</div>
         </div>
       
       
@@ -333,12 +352,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2022/08/11/%E5%85%B3%E4%BA%8E%E6%88%91/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/10/03/%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E5%92%8C%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84/" title="数组指针和指针数组">
-                        <span class="hidden-mobile">数组指针和指针数组</span>
+                      <a href="/2021/08/31/GDB%E8%B0%83%E8%AF%95%E8%BF%87%E7%A8%8B/" title="GDB调试过程">
+                        <span class="hidden-mobile">GDB调试过程</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

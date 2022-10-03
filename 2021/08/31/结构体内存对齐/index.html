@@ -16,21 +16,23 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="GDB调试过程为了可以使用GDB调试，在编译的时候需要加入一些参数指令，如下所示： 1gcc -g -Wall program.c -o program  -g的作用是在可执行文件中加入一些源代码信息，指明我当前执行的可执行文件中的机器指令对应着源代码的第几行代码 -Wall的作用显示所有的警告信息 GDB常用的调试命令 启动&#x2F;退出：gdb 文件名、quit  设置参数&#x2F;显示参数：set args">
+    <meta name="description" content="C++中的结构体内存对齐首先来看一下常见的数据类型占用的内存大小：  对于基本数据类型32位主机和64位主机是相同的，不同的只有指针的大小。 结构体内存对齐的原因是可以提高内存的访问速度。 结构体内存对齐遵循两个规则：  数组成员对齐规则：首个元素放在偏移地址是0的位置，以后每个元素的偏移地址遵循min(当前变量的字节大小，#pragma pack(n))整数倍开始的地方，在windows中#pr">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GDB调试过程">
-<meta property="og:url" content="http://example.com/2022/08/31/GDB%E8%B0%83%E8%AF%95%E8%BF%87%E7%A8%8B/index.html">
+<meta property="og:title" content="结构体内存对齐">
+<meta property="og:url" content="http://example.com/2021/08/31/%E7%BB%93%E6%9E%84%E4%BD%93%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90/index.html">
 <meta property="og:site_name" content="冰淇凌的个人世界">
-<meta property="og:description" content="GDB调试过程为了可以使用GDB调试，在编译的时候需要加入一些参数指令，如下所示： 1gcc -g -Wall program.c -o program  -g的作用是在可执行文件中加入一些源代码信息，指明我当前执行的可执行文件中的机器指令对应着源代码的第几行代码 -Wall的作用显示所有的警告信息 GDB常用的调试命令 启动&#x2F;退出：gdb 文件名、quit  设置参数&#x2F;显示参数：set args">
+<meta property="og:description" content="C++中的结构体内存对齐首先来看一下常见的数据类型占用的内存大小：  对于基本数据类型32位主机和64位主机是相同的，不同的只有指针的大小。 结构体内存对齐的原因是可以提高内存的访问速度。 结构体内存对齐遵循两个规则：  数组成员对齐规则：首个元素放在偏移地址是0的位置，以后每个元素的偏移地址遵循min(当前变量的字节大小，#pragma pack(n))整数倍开始的地方，在windows中#pr">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-08-31T09:25:55.000Z">
-<meta property="article:modified_time" content="2022-08-31T09:26:18.370Z">
+<meta property="og:image" content="http://example.com/images/%E6%95%B0%E6%8D%AE%E6%88%90%E5%91%98%E5%A4%A7%E5%B0%8F.png">
+<meta property="article:published_time" content="2021-08-31T09:24:28.000Z">
+<meta property="article:modified_time" content="2022-10-03T06:06:51.970Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/images/%E6%95%B0%E6%8D%AE%E6%88%90%E5%91%98%E5%A4%A7%E5%B0%8F.png">
   
   
   
-  <title>GDB调试过程 - 冰淇凌的个人世界</title>
+  <title>结构体内存对齐 - 冰淇凌的个人世界</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -195,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="GDB调试过程"></span>
+            <span id="subtitle" data-typed-text="结构体内存对齐"></span>
           
         </div>
 
@@ -206,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-08-31 17:25" pubdate>
-          2022年8月31日 下午
+        <time datetime="2021-08-31 17:24" pubdate>
+          2021年8月31日 下午
         </time>
       </span>
     
@@ -218,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          645 字
+          1k 字
         
       </span>
     
@@ -229,7 +231,7 @@
         
         
         
-          6 分钟
+          9 分钟
         
       </span>
     
@@ -267,50 +269,24 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">GDB调试过程</h1>
+            <h1 style="display: none">结构体内存对齐</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="GDB调试过程"><a href="#GDB调试过程" class="headerlink" title="GDB调试过程"></a>GDB调试过程</h1><p>为了可以使用GDB调试，在编译的时候需要加入一些参数指令，如下所示：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C++">gcc -g -Wall program.c -o program<br></code></pre></td></tr></table></figure>
+                <h1 id="C-中的结构体内存对齐"><a href="#C-中的结构体内存对齐" class="headerlink" title="C++中的结构体内存对齐"></a>C++中的结构体内存对齐</h1><p>首先来看一下常见的数据类型占用的内存大小：</p>
+<p><img src="/images/%E6%95%B0%E6%8D%AE%E6%88%90%E5%91%98%E5%A4%A7%E5%B0%8F.png" srcset="/img/loading.gif" lazyload></p>
+<p>对于基本数据类型32位主机和64位主机是相同的，不同的只有指针的大小。</p>
+<p>结构体内存对齐的原因是可以提高内存的访问速度。</p>
+<p>结构体内存对齐遵循两个规则：</p>
+<ul>
+<li>数组成员对齐规则：首个元素放在偏移地址是0的位置，以后每个元素的偏移地址遵循<code>min(当前变量的字节大小，#pragma pack(n))</code>整数倍开始的地方，在windows中<code>#pragma pack</code>是8，在Linux中是4。</li>
+<li>结构体大小（sizeof）规则：<code>min(数据成员最大的那个所占字节数，#pragma pack(n))</code>的整数倍</li>
+<li>结构体作为成员的对齐规则：如果结构体B中嵌套了结构体A，那么还是以A中的最大数据成员大小来进行对齐，<code>min(结构体A中数据成员最大的那个所占字节数，#pragma pack(n))</code>。比如结构体A中有char、int、double等成员，那么B中A的偏移地址应该从8的整数倍开始存储。</li>
+</ul>
+<p>参考示例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">define</span> _CRT_SECURE_NO_WARNINGS</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stddef.h&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">pragma</span> pack(4)   <span class="hljs-comment">// 16 8 4 2 1</span></span><br><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Student</span><br>&#123;<br>    <span class="hljs-type">int</span> a;<br>    <span class="hljs-type">char</span> b;<br>    <span class="hljs-type">double</span> c;<br>    <span class="hljs-type">float</span> d;<br>&#125;;<br><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Student2</span><br>&#123;<br>    <span class="hljs-type">char</span> a;<br>    <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Student</span> b;<br>    <span class="hljs-type">double</span> c;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">test</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;#pragma pack(4)\n&quot;</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, <span class="hljs-built_in">offsetof</span>(<span class="hljs-keyword">struct</span> Student, a));<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, <span class="hljs-built_in">offsetof</span>(<span class="hljs-keyword">struct</span> Student, b));<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, <span class="hljs-built_in">offsetof</span>(<span class="hljs-keyword">struct</span> Student, c));<br><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>,<span class="hljs-built_in">sizeof</span>(<span class="hljs-keyword">struct</span> Student));<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-built_in">test</span>();<br><span class="hljs-comment">//输出:</span><br><span class="hljs-meta">#<span class="hljs-keyword">pragma</span> pack(4)</span><br><span class="hljs-number">0</span><br><span class="hljs-number">4</span><br><span class="hljs-number">8</span><br><span class="hljs-number">20</span><br></code></pre></td></tr></table></figure>
 
-<p><code>-g</code>的作用是在可执行文件中加入一些源代码信息，指明我当前执行的可执行文件中的机器指令对应着源代码的第几行代码</p>
-<p><code>-Wall</code>的作用显示所有的警告信息</p>
-<h2 id="GDB常用的调试命令"><a href="#GDB常用的调试命令" class="headerlink" title="GDB常用的调试命令"></a>GDB常用的调试命令</h2><ul>
-<li><p>启动/退出：<code>gdb 文件名</code>、<code>quit</code></p>
-</li>
-<li><p>设置参数/显示参数：<code>set args var1 var2</code>、<code>show args</code></p>
-</li>
-<li><p>GDB使用帮助：<code>help</code></p>
-</li>
-<li><p>查看当前文件代码：<code>list</code></p>
-</li>
-<li><p>设置断点：<code>break 行号</code>、<code>break 函数名 </code></p>
-<ul>
-<li>查看断点信息：<code>info break</code></li>
-<li>打了断点之后启动GDB调试：<code>start（程序停在第一行）</code>、<code>run（程序停在第一个断点处）</code></li>
-<li>向下单步调试：<code>step</code>，遇到函数体会进入函数体；<code>next</code></li>
-<li>打印变量的值/类型：<code>print 变量名</code>；<code>ptype 变量名</code></li>
-</ul>
-</li>
-<li><p>多线程调试：</p>
-<ul>
-<li><p>显示所有的线程：<code>info threads</code>，显示所有可以调试的线程ID，这个ID是GDB分配的，从1开始，和线程ID不是同一个东西</p>
-</li>
-<li><p>切换线程：<code>thread ID</code></p>
-</li>
-<li><p>线程锁：<code>set scheduler-locking off|on</code></p>
-<ul>
-<li>on：表示锁定其他线程，只有当前线程可以执行</li>
-<li>off：不锁定任何线程，当程序运行的时候如果有断点，那么所有的线程都会停止下来，如果在当前线程下启动continue，那么会启动所有的线程</li>
-</ul>
-</li>
-<li><p>non-stop模式：某个线程中断在断点处，其他的线程继续运行</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs C++">set target-async <span class="hljs-number">1</span><br>set pagination off<br>set non-stop on<br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
 
                 
               </div>
@@ -328,8 +304,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>GDB调试过程</div>
-      <div>http://example.com/2022/08/31/GDB调试过程/</div>
+      <div>结构体内存对齐</div>
+      <div>http://example.com/2021/08/31/结构体内存对齐/</div>
     </div>
     <div class="license-meta">
       
@@ -341,7 +317,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年8月31日</div>
+          <div>2021年8月31日</div>
         </div>
       
       
@@ -371,12 +347,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2021/08/31/GDB%E8%B0%83%E8%AF%95%E8%BF%87%E7%A8%8B/" title="GDB调试过程">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">GDB调试过程</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/08/31/%E7%BB%93%E6%9E%84%E4%BD%93%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90/" title="结构体内存对齐">
-                        <span class="hidden-mobile">结构体内存对齐</span>
+                      <a href="/2021/08/31/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/" title="智能指针">
+                        <span class="hidden-mobile">智能指针</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
